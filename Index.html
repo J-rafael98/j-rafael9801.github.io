@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>CALCULADORA DE APARAS</title>
+</head>
+<body>
+    <main id="container">
+        <section id="img">
+            <img src="IMG/Renato.png" alt="">
+        </section>
+
+        <section id="calculator">
+            <form id="form">
+                <h1 id="title">
+                    Calcular Aparas 
+                </h1>
+    
+    <label for="quantidade">Quantidade de Pacotes:</label>
+    
+    <input type="number" id="quantidade" step="1" min="0"><br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado">Resultado: </p>
+
+    <script>
+        function calcular() {
+            const quantidade = parseInt(document.getElementById("quantidade").value);
+            const resultado = quantidade * 0.65;
+
+            // Armazena o resultado no localStorage
+            localStorage.setItem('resultado', resultado.toFixed(2));
+
+            // Atualiza o texto na página
+            document.getElementById("resultado").innerText = "Resultado: " + resultado.toFixed(2);
+        }
+
+        window.onload = function() {
+            const resultado = localStorage.getItem('resultado');
+            if (resultado) {
+                document.getElementById("resultado").innerText = "Resultado: " + resultado;
+            }
+        }
+    </script>
+</body>
+</html>
